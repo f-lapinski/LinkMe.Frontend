@@ -7,7 +7,7 @@
       </v-app-bar>
 
       <v-navigation-drawer :order="mobile ? -1 : 0" v-model="drawer">
-        <!--  -->
+        <VListItem v-for="item in menuItem" :key="item.name" :title="item.name" :prepend-icon="item.icon" :to="item.url"></VListItem>
       </v-navigation-drawer>
   
       <v-main>
@@ -21,5 +21,18 @@
   <script setup>
     import { useDisplay } from 'vuetify'
     const { mobile } = useDisplay();
-    const drawer = ref(false)
+    const drawer = ref(null)
+
+    const menuItem = [
+      {
+        name: 'Strona Główna',
+        icon: 'mdi-home',
+        url: '/'
+      },
+      {
+        name: 'Monitorowanie Strony',
+        icon: 'mdi-web-check',
+        url: '/urls'
+      },
+    ]
   </script>
